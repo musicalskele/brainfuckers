@@ -210,26 +210,25 @@ fn execute(instructions: &Vec<Instruction>, tape: &mut [u8;30000], data_pointer:
     }
 }
 
-use std::{env,time::Instant};
-use std::fs::File;
+use std::{env,time::Instant,fs::File};
 
 fn main() {
-    // Get command line arguments
+    // get command line arguments
     let args: Vec<String> = env::args().collect();
 
-    // Ensure there is at least 1 argument: the file path
+    // ensure there is at least 1 argument: the file path
     if args.len() < 2 || args.len() > 3 {
-        eprintln!("Usage: <program> <file path> [<debug mode>]");
+        eprintln!("usage: <program> <file path> [<debug mode>]");
         return;
     }
 
-    // Parse file path and optionally parse debug mode
+    // parse file path and optionally parse debug mode
     let file_path = &args[1];
     let debug_mode: u8 = if args.len() == 3 {
         match args[2].trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                eprintln!("Debug mode must be a number between 0 and 255");
+                eprintln!("debug mode must be a number between 0 and 255");
                 return;
             }
         }
@@ -237,7 +236,7 @@ fn main() {
         0
     };
 
-    // Read the content of the file
+    // read the content of the file
     let mut file_content = String::new();
     match File::open(file_path) {
         Ok(mut file) => {
@@ -252,15 +251,15 @@ fn main() {
         }
     }
 
-    // Filter the file content to include only the specified symbols
+    // filter the file content to include only the specified symbols
     let allowed_symbols = "><+-.,[]|";
     let filtered_content: String = file_content.chars()
         .filter(|c| allowed_symbols.contains(*c))
         .collect();
-    // Print the filtered content and debug mode
+    // print the filtered content and debug mode
     if debug_mode == 1u8 {
-        println!("Filtered content: {}", filtered_content);
-        println!("Debug mode: {}", debug_mode);
+        println!("filtered content: {}", filtered_content);
+        println!("debug mode: {}", debug_mode);
 
         }
     let source_code = filtered_content;
@@ -270,9 +269,9 @@ fn main() {
 
     optimize_opcodes(&mut opcodes);
     if debug_mode == 1u8 {
-        println!("Original Opcodes:");
+        println!("original Opcodes:");
         println!("{:?}",&opcodes);
-        println!("Optimized Opcodes:");
+        println!("optimized Opcodes:");
         println!("{:?}",&opcodes);
     }
 
@@ -289,5 +288,5 @@ fn main() {
     
     let elapsed_time = start_time.elapsed();
 
-    println!("Execution took: {:?}", elapsed_time);
+    if debug_mode == 1u8 {println!("execution took: {:?}", elapsed_time);}
 }
