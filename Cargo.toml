@@ -5,5 +5,7 @@ edition = "2021"
 authors = ["musicalskele <musicalskele@gmail.com>"]
 description = "basic brainfuck interpreter written in rust."
 keywords = ["brainfuck", "programming"]
-license-file = "LICENSE.txt"
+repository = "https://github.com/musicalskele/brainfuckers"
+license = "AGPL-3.0"
+readme = "README.md"
 [dependencies]

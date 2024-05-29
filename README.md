@@ -1,6 +1,7 @@
 # optimized brainfuck interpreter 
 
-this project is a rust implementation of a brainfuck interpreter and optimizer. it reads Brainfuck source code, tokenizes it into opcodes, optimizes these opcodes, parses them into a more manageable format, and finally executes the program. it has no external dependencies other than the standard library.
+this project is a rust implementation of a brainfuck interpreter and optimizer. it reads brainfuck source code, tokenizes it into opcodes, optimizes these opcodes, parses them into a more manageable format, and finally executes the program. it has no external dependencies other than the standard library.
+
 ### usage
 
 ```sh
@@ -16,4 +17,4 @@ this project was created by [musicalskele](https://github.com/musicalskele)
 
 ### license
 
-this project is licensed under the PLACEHOLDER License. see the LICENSE file for details.
+this project is licensed under the GNU AGPLv3 License. see the LICENSE.md file for details.
